@@ -15,7 +15,7 @@ export const register = async (req, res) => {
     if (existingUser) {
       return res.json({ success: false, mesage: "User alreafy exists" });
     }
-    const hashedPassworrd = await bycrypt.hash(password, 10);
+    const hashedPassworrd = await bcrypt.hash(password, 10);
     const user = new userModel({ name, email, password: hashedPassworrd });
     await user.save();
 
