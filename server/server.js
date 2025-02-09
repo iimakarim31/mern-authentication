@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors({ credentials: true }));
 
-//API Endpoints
+// API Endpoints
 app.get("/", (req, res) => res.send("API working"));
 app.use("/api/auth", authRouter);
 
