@@ -197,8 +197,8 @@ export const sendResetOtp = async (req, res) => {
     const mailOption = {
       from: process.env.SENDER_EMAIL,
       to: user.email,
-      subject: "PAssword Reset OTP",
-      text: `Yout OTP for reset yout password is ${otp}. Use this otp to proceed with reset your password.`,
+      subject: "Password Reset OTP",
+      text: `Your OTP for reset yout password is ${otp}. Use this otp to proceed with reset your password.`,
     };
 
     await transporter.sendMail(mailOption);
