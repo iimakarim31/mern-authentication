@@ -55,7 +55,7 @@ const Login = () => {
   };
 
   return (
-    <div className='flex items-center justify-center min-h-screen px-6 sm:px-0 bg-gradient-to-br from-blue-200 to-purple-400'>
+    <div className='flex items-center justify-center min-h-screen bg-[url("/bg_img.png")] bg-cover bg-center px-6 sm:px-0'>
       <img
         onClick={() => navigate("/")}
         src={assets.logo}
@@ -64,12 +64,12 @@ const Login = () => {
       />
       <div className='bg-slate-900 p-10 rounded-lg shadow-lg w-full sm:w-96 text-indigo-300 text-sm'>
         <h2 className='text-3xl font-semibold text-white text-center mb-3'>
-          {state === "Sign Up" ? "Create Account" : "Login to your account!"}
+          {state === "Sign Up" ? "Create Account" : "Login Account"}
         </h2>
 
         <p className='text-center text-sm mb-6'>
           {state === "Sign Up"
-            ? "Create your account"
+            ? "Create your account!"
             : "Login to your account!"}
         </p>
 

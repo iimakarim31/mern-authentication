@@ -9,23 +9,20 @@ const Header = () => {
       <img
         src={assets.header_img}
         alt=''
-        className='w-36 h-36 rounded-full mb-6'
+        className='w-50 h-60 rounded-full mb-6'
       />
       <h1 className='flex items-center gap-2 text-xl sm:text-3xl font-medium mb-2'>
-        Hey {userData ? userData.name : "Developer"}!
+        Hey {userData ? userData.name : "Everyone"}!
         <img src={assets.hand_wave} alt='' className='w-8 aspect-square' />
       </h1>
-      <h2 className='text-3xl sm:text-5xl font-semibold mb-4'>
+      <h2 className='text-2xl sm:text-3xl font-semibold mb-4'>
         Welcome to My Authentication App
       </h2>
-      <p className='mb-8 max-w-md'>
-        Let's start with a quick product tour & we will have you up and running
-        in no time!
+      <p className='mb-10 max-w-md'>
+        IIn this web application I am creating a Login, Registration and
+        Password Reset system using MERN Stack (MongoDB, Express, React & Node)
+        | JWT Authentication and OTP Email Verification in this Project.
       </p>
-
-      <button className='border border-gray-500 rounded-full px-8 py-2.5 hover:bg-gray-100 transition-all'>
-        Get Started
-      </button>
     </div>
   );
 };
