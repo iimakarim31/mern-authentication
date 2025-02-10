@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { assets } from "../assets/assets";
+import axios from "axios";
+import { AppContent } from "../context/AppContext";
+import { toast } from "react-toastify";
+import { data, useNavigate } from "react-router-dom";
 
 const EmailVerify = () => {
+  axios.defaults.withCredentials = true;
+  const { backendUrl, isLoggedin, userData, getUserData } =
+    useContext(AppContent);
+
+  const navigate = useNavigate();
+
   const inputRefs = React.useRef([]);
   const handleInput = (e, index) => {
     if (e.target.value.length > 0 && index < inputRefs.current.length - 1) {
@@ -24,6 +34,28 @@ const EmailVerify = () => {
       }
     });
   };
+
+  const onSubmitHandler = async (e) => {
+    try {
+      e.preventDefault();
+      const otpArray = inputRefs.current.map((e) => e.value);
+      const otp = otpArray.join("");
+
+      const { data } = await axios.post(
+        backendUrl + "/api/auth/verify-account",
+        { otp }
+      );
+      if (data.success) {
+        toast.success(data.message);
+        getUserData();
+        navigate("/");
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
   return (
     <div className='flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-200 to-purple-400'>
       <img
@@ -34,6 +66,7 @@ const EmailVerify = () => {
       cursor-pointer'
       />
       <form
+        onSubmit={onSubmitHandler}
         className='bg-slate-900 p-8 rounded-lg shadow-lg w-96 text-sm'
         action=''
       >
